@@ -34,6 +34,10 @@
 
 body {
   background: var(--bg-url) no-repeat top center/cover;
+
+  height: 90vh;
+
+  transition: background 1s;
 }
 
 body * {
@@ -42,8 +46,11 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 90%;
+  max-width: 588px;
+
   margin: 56px auto 0px;
+  padding: 0 24px;
 }
 
 #profile {
@@ -67,7 +74,7 @@ body * {
   position: relative;
   width: 64px;
 
-  margin: 20px auto 4px;
+  margin: 20px auto 10px;
 }
 
 #switch button {
@@ -75,6 +82,8 @@ body * {
   height: 32px;
 
   background: #fff var(--switch) no-repeat center;
+
+  cursor: pointer;
 
   border: 0;
   border-radius: 50%;
@@ -84,10 +93,16 @@ body * {
 
   top: 50%;
   transform: translateY(-50%);
+
+  animation: slide-back 0.5s;
 }
 
 .ligth #switch button {
-  right: 0;
+  animation: slide-in 0.5s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--bg-social-links);
 }
 
 #switch span {
@@ -165,7 +180,42 @@ footer {
   display: flex;
   justify-content: center;
 
+  bottom: -10px;
+
   padding: 24px 0;
 
   font-size: 14px;
+}
+
+footer p span {
+  font-weight: 700;
+}
+
+/* media queries */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .ligth {
+    --bg-url: url(./assets/bg-desktop-ligth.jpg);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
